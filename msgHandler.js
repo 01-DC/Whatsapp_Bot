@@ -102,7 +102,7 @@ module.exports = msgHandler = async (client, message) => {
 		break
         
 	case 'tts':
-        if (args.length === 1) return client.reply(from, '  *Usage #tts language text*')
+        if (args.length === 1) return client.reply(from, '  *Usage !tts language text*')
             const dataBhs = body.slice(5, 7)
             const dataText = body.slice(8)
 
@@ -199,11 +199,11 @@ ${desc}`)
                 await client.sendText(from, '🌎️Covid Info -' + country + ' 🌍️\n\n✨️Total Cases: ' + `${cases}` + '\n📆️Today\'s Cases: ' + `${todayCases}` + '\n☣️Total Deaths: ' + `${deaths}` + '\n☢️Today\'s Deaths: ' + `${todayDeaths}` + '\n⛩️Active Cases: ' + `${active}` + '.')
             break
 			    
-        case 'ping':
+        case 'attendance':
             if (!isGroupMsg) return client.reply(from, 'Sorry, This command can only be used in groups', message.id)
             if (!isGroupAdmins) return client.reply(from, 'Well, only admins can use this command', message.id)
             const groupMem = await client.getGroupMembers(groupId)
-            let hehe = `${body.slice(6)} - ${pushname} \n`
+            let hehe = `${body.slice(12)} - ${pushname} \n`
             for (let i = 0; i < groupMem.length; i++) {
                 hehe += '✨️'
                 hehe += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
@@ -593,6 +593,19 @@ ${desc}`)
             if (quotedMsg) return profile(quotedMsgObj.sender.id, message, fs, groupAdmins, client)
 	    if (mentionedJidList.length >= 1) return profile(mentionedJidList[1], message, fs, groupAdmins, client)
 	    return profile(sender.id, message, fs, groupAdmins, client)
+            break
+        case 'link' :
+            var dataDay = body.slice(6, 9)
+            var dataTime = body.slice(10)
+            var cls = {'mon': {'10' : "https://meet.google.com/ncu-oukc-xff", '11' : "https://meet.google.com/lookup/agum5j5ouf?authuser=1&hs=179"},
+                        'tue' : {'9' : "https://meet.google.com/qys-swmt-ukb?hs=224", '11' : "https://meet.google.com/lookup/camwze4h7l?authuser=1&hs=179", '1430' : "https://meet.google.com/cut-cbgc-fqs?hs=224"},
+                        'wed' : {'9A' : "https://meet.google.com/wqi-wxsf-igi?hs=224", '9S' : "https://meet.google.com/kzb-ekty-nfo?hs=224", '1430' : "https://meet.google.com/ihp-eovk-jya?authuser=0"},
+                        'thu' : {'9' : "https://meet.google.com/won-nefa-xet?hs=224", '11' : "https://meet.google.com/ihp-eovk-jya?authuser=0", '1430' : "No Link Yet"},
+                        'fri' : {'9' : "https://meet.google.com/vxk-iczh-txv?hs=224", '10' : "https://meet.google.com/omy-kugm-rhh?hs=224", '11' : "https://meet.google.com/cxs-xxuc-rpc?hs=224", '14' : "https://meet.google.com/lookup/aj47h42ln6?authuser=1&hs=179"} };
+            if(cls [dataDay] == undefined || cls[dataDay][dataTime] == undefined)
+                return client.reply(from, 'Invalid day or Invalid time format!', id)
+            else
+                return client.reply(from, 'The link for this class is: \n\n'+cls[dataDay][dataTime], id)
             break
         default:
             console.log(color('[PREFIX-CALL]', 'green'), color(time, 'yellow'), 'Command from', color(pushname))

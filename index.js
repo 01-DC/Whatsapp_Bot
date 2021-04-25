@@ -58,7 +58,7 @@ const startServer = async (client) => {
             	client.sendText(chat.id, `This group only has ${totalMem} members, Its needs atleast 30 members to activate the services`).then(() => client.leaveGroup(chat.id))
             	client.deleteChat(chat.id)
             } else {
-                client.sendText(chat.groupMetadata.id, `Thanks for adding me *${chat.contact.name}*. Use #help to see the usable commands`)
+                client.sendText(chat.groupMetadata.id, `Thanks for adding me *${chat.contact.name}*. Use !help to see the usable commands`)
             }
         })
 
