@@ -1,7 +1,7 @@
 <div align="center">
-<img src="https://img.wattpad.com/userbg/monopi123.49228.jpg" alt="Botto-re" width="500" />
+<img src="https://wallpapercave.com/wp/wp7965201.jpg" alt="Botto-re" width="500" />
 
-# Whatsapp-Botto-Re
+# Whatsapp-Bot
 
 > A whatsapp bot made using open-wa/wa-automate-nodejs library
 
@@ -42,9 +42,9 @@ Edit `config.json` to customize the bot as needed
 
 {
     "botadmins": [], 
-    "prefix": "=",
+    "prefix": "!",
     "uaOverride": "WhatsApp/2.2037.6 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36",
-    "botname": "Emilia"
+    "botname": "[DC] Bot"
 }
 
 ```
